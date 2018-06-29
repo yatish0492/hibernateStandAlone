@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <!-- One table per heirarchy -->
+    <!-- this will create a single table for complete heirarchy. with descriminator value saying which record is from which class -->
+    <!-- in this case of discriminators method, there is no need for key property to be declared in the sub classes. -->
+    <class name="com.pojos.SoftwareEmployees" table="SOFTWARE_EMPLOYEES" discriminator-value="Emp">  <!-- if we are using descriminator, then we have to specify descriminator value for all the class and subclasses -->
+    
+    <id name="empId" column="EMP_ID">
+    	<generator class="increment"/>
+    </id>
+    <discriminator column="TYPE_OF_OBJECT"/>  <!-- this is the column, which will show the record is from which class in the heirarchy -->
+    <!-- Descriminator have to be declared immediate after id. i.e. before properties start -->
+    <property name="name" column="NAME"/>
+    
+    
+    <subclass name="com.pojos.Developer" discriminator-value="Dev">  <!-- No need to define table attribute here as there will be no new table created for subcalss -->
+    <property name="DeveloperTechnology" column="DEV_TECHNOLOGY"/>
+    </subclass>
+    
+    <subclass name="com.pojos.Tester" discriminator-value="Test">  <!-- No need to define table attribute here as there will be no new table created for subcalss -->
+    <property name="testingTechnology" column="TEST_TECHNOLOGY"/>
+    </subclass>
+    
+    </class>
+    </hibernate-mapping>

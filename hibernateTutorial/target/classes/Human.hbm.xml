@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <!-- In this case of heirarchy, we create table for each and every subclass.  -->
+    <class name="com.pojos.Human" table="HUMANS">
+    
+    <id name="adharNo" column="ADHAR_NUMBER">
+      <generator class="increment"/>
+    </id>
+    <property name="name" column="NAME"/>
+    
+    <union-subclass name="com.pojos.physicallyChallenged" table="PHYSICALLY_CHALLENGED_HUMANS">
+    <property name="challenge" column="CHALLENGE"/>
+    </union-subclass>
+    
+    <union-subclass name="com.pojos.NonPhysicallyChallenged" table="NON_PHYSICALLY_CHALLENGED_HUMANS">
+    <property name="hobby" column="HOBBY"/>
+    </union-subclass>
+    
+    </class>
+    
+    </hibernate-mapping>

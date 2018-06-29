@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    
+    <class name="com.pojos.Employee" table="EMPLOYEE">
+    <id name="empId" column="EMP_ID">
+    <generator class="assigned"/>
+    </id>
+    <timestamp name="timestamp" column="TIME_STAMP"/>  <!-- timestamp should be after the id, if it is present after any property, then it will give error -->
+    <property name="name" column="EMP_NAME"/>
+    
+    </class>
+    
+    </hibernate-mapping>

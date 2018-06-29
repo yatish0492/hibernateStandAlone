@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    
+    <class name="com.pojos.Dogs" table="DOGS">
+    
+    <id name="id" column="DOG_ID">
+      <generator class="increment"/>
+    </id>
+    <property name="name" column="NAME"/>
+    
+    <joined-subclass name="com.pojos.WhiteDog" table="WHITE_DOGS">
+    <key column="WHITE_DOG_ID"/>
+    <property name="breed" column="BREED"/>
+    </joined-subclass>
+    
+    <joined-subclass name="com.pojos.BlackDog" table="BLACK_DOGS">
+    <key column="BLACK_DOG_ID"/>
+    <property name="weight" column="WEIGHT"/>
+    </joined-subclass>
+    
+    </class>
+    
+    </hibernate-mapping>

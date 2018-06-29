@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    
+    <class name="com.pojos.StudentWithIDNameOnly"  table="STUDENT_WITH_ID_NAME_ONLY">     <!-- It is very important to mention the class name with package prefix -->
+    
+    <id name="StudentId" column="STUDENT_ID">
+    <generator class="assigned"/> 
+    </id>
+    <property name="name" column="STUDENT_NAME"/>
+
+    </class>
+    
+    </hibernate-mapping>
+	

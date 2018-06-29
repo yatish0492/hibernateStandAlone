@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    
+    <class name="com.pojos.Student"  table="STUDENT">     <!-- It is very important to mention the class name with package prefix -->
+    
+    <id name="id" column="STUDENT_ID">
+    <generator class="assigned"/> <!-- values supported for class are 'assigned' and 'increment' -->
+    <!-- assigned = if assigned, then whenever we are inserting a row, we have to explicitly set the id and send -->
+    <!-- increment = if increment, then whenever we are inserting a row,no need to set the id in objects, hibernate only will generate the id by itself, like id=1,2,3....n -->
+    <!-- sequence = if sequence, it is same like increment but it will not increment id's by 1, please refer net for more details-->
+    </id>
+    <version name="version" column="VERSION"/>  <!-- version should be after the id, if it is present after any property, then it will give error -->
+    <property name="Name" column="STUDENT_NAME"/>
+    <property name="age" column="STUDENT_AGE"/>
+    </class>
+    
+    </hibernate-mapping>
+	

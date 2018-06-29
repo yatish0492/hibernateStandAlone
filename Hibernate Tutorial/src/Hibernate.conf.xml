@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+	<hibernate-configuration>
+	
+	<session-factory>
+	
+	<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+	<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/HibernateTutorial</property>
+	<property name="hibernate.connection.username">admin</property>
+	<property name="hibernate.connection.password">admin</property>
+	<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+	<property name="hibernate.hbm2ddl.auto">create</property>                <!-- This property have to be defined mandatorily -->
+	<!-- hibernate.hbm2ddl.auto = create, in this case, the table is freshly created whenever the session starts, so once the server is down, we still have the table with data in DB still next session creation  -->
+	<!-- hibernate.hbm2ddl.auto = create-drop, this is same as create, but it will destroy the table, when session is closed. hence the table and data is also deleted in DB, when session closes -->
+	<!-- hibernate.hbm2ddl.auto = update, this will retain the table and data as it is there. but when shema is changed(a column is added or deleted etc), then during session creation, it will delete the data and update table schema. even if table doesn't exist or doesnt match the schema also it will create -->
+	<!-- hibernate.hbm2dll.auto = validate, this will not create tables, it will only validate, if the tables for all the schemas mentioned in hbm.xml files are present or not in the DB, if any table is missing or schema is not matching, then throws exception-->
+	
+	<property name="hibernate.show_sql">true</property>
+	
+	<!-- List of XML mapping files -->
+    <mapping resource="Student.hbm.xml"/>
+    <mapping resource="Employee.hbm.xml"/>
+    <mapping resource="SoftwareEmployees.hbm.xml"/>
+    <mapping resource="Human.hbm.xml"/>
+    <mapping resource="Dogs.hbm.xml"/>
+    <mapping resource="StudentWithIDNameOnly.hbm.xml"/>
+    
+	</session-factory>
+	
+	</hibernate-configuration>
